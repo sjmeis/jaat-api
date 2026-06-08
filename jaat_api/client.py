@@ -43,13 +43,13 @@ class JAATClient:
         """
         Processes an array of strings against a specific JAAT module.
         
-        :param module: The module identifier string ('task', 'skill', 'ai') -> currently supported modules
+        :param module: The module identifier string ('task', 'skill', 'ai', 'title') -> currently supported modules
         :param texts: A list of occupational text strings to evaluate
         :return: A list containing your cleanly serialized inference results
         """
         mod_clean = module.lower().strip()
-        if mod_clean not in ["task", "skill", "ai"]:
-            raise ValueError("Invalid module selection. Choose from: 'task', 'skill', or 'ai'.")
+        if mod_clean not in ["task", "skill", "ai", "title"]:
+            raise ValueError("Invalid module selection. Choose from: 'task', 'skill', 'ai', or 'title'.")
             
         endpoint = f"/v1/{mod_clean}/batch"
         payload = {"texts": texts}
@@ -66,3 +66,6 @@ class JAATClient:
 
     def get_ai(self, texts: List[str]) -> List[Any]:
         return self.run_batch("ai", texts)
+    
+    def get_title(self, texts: List[str]) -> List[Any]:
+        return self.run_batch("title", texts)
