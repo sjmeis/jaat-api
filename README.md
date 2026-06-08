@@ -1,5 +1,8 @@
 # jaat-api
 
+[![PyPI version](https://img.shields.io/pypi/v/jaat-api.svg)](https://pypi.org/project/jaat-api/)
+[![License](https://img.shields.io/github/license/sjmeis/jaat-api.svg)](https://github.com/sjmeis/jaat-api/blob/main/LICENSE)
+
 The official, lightweight Python client library for the **JAAT** suite of tools. 
 
 `jaat-api` is an easy-to-use, intuitive, session-managed SDK for programtically accessing the open-source JAAT modules. Securely send text batches to the openly hosted JAAT modules.
