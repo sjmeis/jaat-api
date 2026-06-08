@@ -41,6 +41,20 @@ skill_results = client.run_batch("skill", job_ads)
 
 ## Helpful Tips
 
+### Handling Exceptions
+
+The SDK provides a structured `JAATError` instance whenever an operation breaks down or fails. Ideally, wrap jobs within try/except blocks to handle these conditions gracefully:
+
+```python
+from jaat_api import JAATError
+
+try:
+    ## as before
+except JAATError as e:
+    print(f"Extraction failed (Status Code: {e.status_code})")
+    print(f"Error Context: {e.message}")
+```
+
 ### Sandbox Public Evaluation
 Anyone looking to evaluate the platform programmatically before contacting us for a dedicated token can use the public sandbox key:
 
@@ -56,20 +70,6 @@ except JAATError as e:
 ```
 
 As can be seen, the public API key is highly throttled and is strictly for testing purposes. The current usage of this key is limited to one request per day, per IP.
-
-### Handling Exceptions
-
-The SDK provides a structured `JAATError` instance whenever an operation breaks down or fails. Ideally, wrap jobs within try/except blocks to handle these conditions gracefully:
-
-```python
-from jaat_api import JAATError
-
-try:
-    ## as before
-except JAATError as e:
-    print(f"Extraction failed (Status Code: {e.status_code})")
-    print(f"Error Context: {e.message}")
-```
 
 ### License
 `jaat-api` (and `JAAT`) are distributed under the MIT License. See `LICENSE` for more information.
