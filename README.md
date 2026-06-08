@@ -24,14 +24,13 @@ Initialize the `JAATClient` with your API key (provided by us) and execute JAAT 
 ```python
 from jaat_api import JAATClient
 
-client = JAATClient(api_key="jaat_app_your_secret_production_key_here")
+client = JAATClient(api_key="jaat_app_private_key_here")
 
 job_ads = [
     "[JOB AD TEXT 1]",
     "[JOB AD TEXT 2]",
     "..."
 ]
-
 
 task_results = client.run_batch("task", job_ads) # alternatively, client.get_tasks(job_ads)
 
