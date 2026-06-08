@@ -40,6 +40,18 @@ skill_results = client.run_batch("skill", job_ads)
 
 ## Helpful Tips
 
+### Currently Supported `JAAT` Modules
+As of the current version of `jaat-api`, the following `JAAT` modules are supported:
+
+| Supported from Version: | `jaat-api` ID | `JAAT` Module |
+|:-----------------------:|:-------------:|:-------------:|
+|          0.1.0          |     `task`    |  `TaskMatch`  |
+|          0.1.0          |    `skill`    |  `SkillMatch` |
+|          0.1.0          |      `ai`     |   `AIMatch`   |
+|          0.2.0          |    `title`    |  `TitleMatch` |
+
+The API is currently running `JAAT`: [![PyPI version](https://img.shields.io/pypi/v/jaat.svg)](https://pypi.org/project/jaat/)
+
 ### Handling Exceptions
 
 The SDK provides a structured `JAATError` instance whenever an operation breaks down or fails. Ideally, wrap jobs within try/except blocks to handle these conditions gracefully:
