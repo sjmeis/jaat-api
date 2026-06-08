@@ -21,7 +21,7 @@ Initialize the `JAATClient` with your API key (provided by us) and execute JAAT 
 ```python
 from jaat_api import JAATClient
 
-client = JAATClient(api_key="jaat_live_your_secret_production_key_here")
+client = JAATClient(api_key="jaat_app_your_secret_production_key_here")
 
 job_ads = [
     "[JOB AD TEXT 1]",
@@ -70,6 +70,10 @@ except JAATError as e:
 
 ### License
 `jaat-api` (and `JAAT`) are distributed under the MIT License. See `LICENSE` for more information.
+
+## Getting a Key
+
+We will soon be releasing a contact form to let us know your interest in receiving a private API key. Stay tuned!
 
 ## Citation
 This code and the overarching `JAAT` package is part of ongoing work to leverage lightweight, but powerful NLP tools to unlock structured, coded data from job posting data.
