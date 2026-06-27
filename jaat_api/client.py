@@ -50,7 +50,10 @@ class JAATClient:
         mod_clean = module.lower().strip()
         if mod_clean not in ["task", "skill", "ai", "title"]:
             raise ValueError("Invalid module selection. Choose from: 'task', 'skill', 'ai', or 'title'.")
-            
+        
+        if mod_clean == "ai":
+            mod_clean = "AI"
+
         endpoint = f"/v1/{mod_clean}/batch"
         payload = {"texts": texts}
         
