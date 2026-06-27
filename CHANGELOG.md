@@ -1,6 +1,10 @@
+## [0.3.0] - 2026-06-27
+### Added
+ - The client now supports non-batched processing, i.e., for single texts.
+
 ## [0.2.1] - 2026-06-27
 ### Fixed
- - 'AIMatch' client calls fixed
+ - `AIMatch` client calls fixed
 
 ## [0.2.0] - 2026-06-08
 ### Added
