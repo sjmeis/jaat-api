@@ -5,7 +5,7 @@
 
 The official, lightweight Python client library for the **JAAT** suite of tools. 
 
-`jaat-api` is an easy-to-use, intuitive, session-managed SDK for programtically accessing the open-source JAAT modules. This tool works great for integrating JAAT into your workflows or applications, and it enablings accessing JAAT with running it locally!
+`jaat-api` is an easy-to-use, intuitive, session-managed SDK for programtically accessing the open-source `JAAT` modules. This tool works great for integrating `JAAT` into your workflows or applications, and it enablings accessing `JAAT` with running it locally!
 
 ---
 
@@ -32,10 +32,18 @@ job_ads = [
     "..."
 ]
 
-task_results = client.run_batch("task", job_ads) # alternatively, client.get_tasks(job_ads)
+task_results = client.run_batch("task", job_ads) # alternatively, client.get_tasks_batch(job_ads)
 
 # continue to run other jobs
 skill_results = client.run_batch("skill", job_ads)
+```
+
+Of course, you can also use the client to process single texts:
+
+```python
+task_result = client.run("task", job_ads[0]) # alternatively, client.get_tasks(job_ads)
+
+skill_result = client.run("skill", job_ads[0])
 ```
 
 ## Helpful Tips

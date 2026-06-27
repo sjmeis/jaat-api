@@ -38,21 +38,49 @@ class JAATClient:
             
         except requests.exceptions.RequestException as e:
             raise JAATError(500, f"Network communication failure: {str(e)}")
+        
+    def run(self, module: str, text: str) -> List[Any]:
+        """
+        Processes a single string against a specific JAAT module.
+        
+        :param module: The module identifier string ('task', 'skill', 'ai', 'title') -> currently supported modules
+        :param text: A text string to evaluate
+        :return: A list or tuple containing JAAT results
+        """
+        mod_clean = module.lower().strip()
+        if mod_clean not in ["task", "skill", "ai", "title"]:
+            raise ValueError("Invalid module selection. Choose from: 'task', 'skill', 'ai', or 'title'.")
+
+        endpoint = f"/v1/{mod_clean}/analyze"
+        payload = {"text": text}
+        
+        response_data = self._request(endpoint, payload)
+        return response_data.get("results", [])
+    
+    # for ease of use (single mode)
+    def get_tasks(self, text: str) -> List[Any]:
+        return self.run("task", text)
+
+    def get_skills(self, text: str) -> List[Any]:
+        return self.run("skill", text)
+
+    def get_ai(self, text: str) -> List[Any]:
+        return self.run("ai", text)
+    
+    def get_title(self, text: str) -> List[Any]:
+        return self.run("title", text)
 
     def run_batch(self, module: str, texts: List[str]) -> List[Any]:
         """
         Processes an array of strings against a specific JAAT module.
         
         :param module: The module identifier string ('task', 'skill', 'ai', 'title') -> currently supported modules
-        :param texts: A list of occupational text strings to evaluate
-        :return: A list containing your cleanly serialized inference results
+        :param texts: A list of text strings to evaluate
+        :return: A list containing your JAAT results for each input
         """
         mod_clean = module.lower().strip()
         if mod_clean not in ["task", "skill", "ai", "title"]:
             raise ValueError("Invalid module selection. Choose from: 'task', 'skill', 'ai', or 'title'.")
-        
-        if mod_clean == "ai":
-            mod_clean = "AI"
 
         endpoint = f"/v1/{mod_clean}/batch"
         payload = {"texts": texts}
@@ -60,15 +88,15 @@ class JAATClient:
         response_data = self._request(endpoint, payload)
         return response_data.get("results", [])
 
-    # for ease of use
-    def get_tasks(self, texts: List[str]) -> List[Any]:
+    # for ease of use (batch mode)
+    def get_tasks_batch(self, texts: List[str]) -> List[Any]:
         return self.run_batch("task", texts)
 
-    def get_skills(self, texts: List[str]) -> List[Any]:
+    def get_skills_batch(self, texts: List[str]) -> List[Any]:
         return self.run_batch("skill", texts)
 
-    def get_ai(self, texts: List[str]) -> List[Any]:
+    def get_ai_batch(self, texts: List[str]) -> List[Any]:
         return self.run_batch("ai", texts)
     
-    def get_title(self, texts: List[str]) -> List[Any]:
+    def get_title_batch(self, texts: List[str]) -> List[Any]:
         return self.run_batch("title", texts)
