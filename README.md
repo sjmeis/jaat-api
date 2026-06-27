@@ -5,7 +5,7 @@
 
 The official, lightweight Python client library for the **JAAT** suite of tools. 
 
-`jaat-api` is an easy-to-use, intuitive, session-managed SDK for programtically accessing the open-source JAAT modules. Securely send text batches to the openly hosted JAAT modules.
+`jaat-api` is an easy-to-use, intuitive, session-managed SDK for programtically accessing the open-source JAAT modules. This tool works great for integrating JAAT into your workflows or applications, and it enablings accessing JAAT with running it locally!
 
 ---
 
